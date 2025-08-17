@@ -44,12 +44,12 @@ public class NotificationConfig {
         return rabbitTemplate;
      }
 
+     @Bean
      public SimpleRabbitListenerContainerFactory listenerContainerFactory(ConnectionFactory connectionFactory, Jackson2JsonMessageConverter messageConverter){
          SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
          factory.setConnectionFactory(connectionFactory);
          factory.setMessageConverter(messageConverter);
          return factory;
-
      }
 
 }

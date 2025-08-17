@@ -2,6 +2,7 @@ package com.favourcode.customer.producer;
 
 
 import com.favourcode.customer.dto.FraudCheckPayload;
+import com.favourcode.customer.dto.OrderPlacementPayload;
 import com.favourcode.customer.model.Customer;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,5 +23,15 @@ public class CustomerProducerService {
 
     public void publishUserBlockedNotification(String email){
       log.info("Sent notification to user with mail: {}", email);
+    }
+
+    public void publishOrderPlacedEvent(OrderPlacementPayload payload){
+        rabbitTemplate.convertAndSend(
+                "order_exchange",
+                "order.placed",
+                payload
+
+        );
+        log.info("Order placed event published");
     }
 }

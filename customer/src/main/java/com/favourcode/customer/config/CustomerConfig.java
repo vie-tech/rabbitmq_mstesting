@@ -28,6 +28,11 @@ public class CustomerConfig {
     }
 
     @Bean
+    public TopicExchange orderExchange(){
+        return new TopicExchange("order_exchange");
+    }
+
+    @Bean
     public Queue fraudResultQueue(){
         return new Queue("customer.fraud.result.queue");
     }

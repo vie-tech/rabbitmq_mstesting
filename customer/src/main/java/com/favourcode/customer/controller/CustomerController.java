@@ -1,5 +1,6 @@
 package com.favourcode.customer.controller;
 import com.favourcode.customer.dto.CustomerRequest;
+import com.favourcode.customer.dto.OrderPlacementPayload;
 import com.favourcode.customer.service.CustomerService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,12 @@ public class CustomerController {
     public ResponseEntity<?> registerCustomer(@Valid @RequestBody CustomerRequest request){
         customerService.registerCustomer(request);
         return ResponseEntity.ok(Map.of("success", true));
+    }
+
+    @PostMapping("/place_order")
+    public ResponseEntity<?> placeOrder(@Valid @RequestBody OrderPlacementPayload request){
+        customerService.processCreatedOrder(request);
+        return ResponseEntity.ok(Map.of("success", true, "message", "order placed successfully"));
     }
 
 }

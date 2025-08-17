@@ -1,0 +1,52 @@
+package com.favourcode.order.config;
+
+
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class OrderConfig {
+
+    @Bean
+    public TopicExchange orderExchange(){
+        return new TopicExchange("order_exchange");
+    }
+
+    @Bean
+    public Queue orderPlacedQueue(){
+        return new Queue("order.placed.queue");
+    }
+
+    @Bean
+    public Binding orderPlacedBinding(){
+        return BindingBuilder.bind(orderPlacedQueue()).to(orderExchange()).with("order.placed");
+    }
+
+    @Bean
+      public Jackson2JsonMessageConverter jackson2JsonMessageConverter(){
+          return new Jackson2JsonMessageConverter();
+      }
+
+    @Bean
+    public RabbitTemplate rabbitTemplate (ConnectionFactory connectionFactory){
+        RabbitTemplate template = new RabbitTemplate(connectionFactory);
+        template.setMessageConverter(jackson2JsonMessageConverter());
+        return template;
+    }
+
+    @Bean
+    public SimpleRabbitListenerContainerFactory factory(ConnectionFactory connectionFactory, Jackson2JsonMessageConverter messageConverter){
+        SimpleRabbitListenerContainerFactory listenerFactory = new SimpleRabbitListenerContainerFactory();
+        listenerFactory.setConnectionFactory(connectionFactory);
+        listenerFactory.setMessageConverter(messageConverter);
+        return listenerFactory;
+    }
+}

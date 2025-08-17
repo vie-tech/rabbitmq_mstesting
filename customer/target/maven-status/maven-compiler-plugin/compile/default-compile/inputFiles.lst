@@ -1,0 +1,13 @@
+C:\Users\Admin\Desktop\java\favourservices\customer\src\main\java\com\favourcode\customer\config\CustomerConfig.java
+C:\Users\Admin\Desktop\java\favourservices\customer\src\main\java\com\favourcode\customer\consumer\CustomerConsumer.java
+C:\Users\Admin\Desktop\java\favourservices\customer\src\main\java\com\favourcode\customer\controller\CustomerController.java
+C:\Users\Admin\Desktop\java\favourservices\customer\src\main\java\com\favourcode\customer\CustomerApplication.java
+C:\Users\Admin\Desktop\java\favourservices\customer\src\main\java\com\favourcode\customer\dto\CustomerRequest.java
+C:\Users\Admin\Desktop\java\favourservices\customer\src\main\java\com\favourcode\customer\dto\FraudCheckPayload.java
+C:\Users\Admin\Desktop\java\favourservices\customer\src\main\java\com\favourcode\customer\dto\FraudCheckResponse.java
+C:\Users\Admin\Desktop\java\favourservices\customer\src\main\java\com\favourcode\customer\dto\FraudCheckResultPayload.java
+C:\Users\Admin\Desktop\java\favourservices\customer\src\main\java\com\favourcode\customer\initializer\Initializer.java
+C:\Users\Admin\Desktop\java\favourservices\customer\src\main\java\com\favourcode\customer\model\Customer.java
+C:\Users\Admin\Desktop\java\favourservices\customer\src\main\java\com\favourcode\customer\producer\CustomerProducerService.java
+C:\Users\Admin\Desktop\java\favourservices\customer\src\main\java\com\favourcode\customer\repository\CustomerRepository.java
+C:\Users\Admin\Desktop\java\favourservices\customer\src\main\java\com\favourcode\customer\service\CustomerService.java
